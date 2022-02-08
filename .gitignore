@@ -4,4 +4,4 @@
 **/target/
 *.iml
 performance.log
-allure-results
+#allure-results
