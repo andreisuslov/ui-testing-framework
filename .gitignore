@@ -1,7 +1,7 @@
 **/results/
 **/build/
 **idea
-#target
+target
 *.iml
 performance.log
 allure-results
