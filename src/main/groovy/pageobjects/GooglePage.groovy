@@ -7,7 +7,6 @@ import io.qameta.allure.Step
 import static com.codeborne.selenide.Selenide.*
 import static org.openqa.selenium.By.name
 
-
 class GooglePage {
 
     public openGooglePage() {
