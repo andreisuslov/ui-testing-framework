@@ -15,10 +15,11 @@ class DP {
         TestParameters parameters = testMethod.getAnnotation(TestParameters.class)
         String[] fields = parameters.value()
         String dataFileName = context.getCurrentXmlTest().getParameter("dataParamFile");
-        String dataFileDir = ConfigReader.getProperty("suite")
-        String dataFilePath = dataFileDir + "/" + dataFileName
-        println("Loading the data parameters file: " + dataFilePath)
-        File tFile = new File(dataFilePath)
+        String dataFileDir = ConfigReader.getProperty("suite");
+        String dataFilePath = dataFileDir + "/suites/smoke/" + dataFileName;
+        System.out.println("Loading the data parameters file: " + dataFilePath);
+        File tFile = new File(dataFilePath);
+        System.out.println("Full path to the file: " + tFile.getAbsolutePath());
 
         if(dataFileName.endsWith(".yaml"))
             return YamlDataParcer.parseFile(fields,tFile)

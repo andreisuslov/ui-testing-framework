@@ -21,7 +21,8 @@ class PerformQuerySearch {
     @TestParameters(['query'])
     @Description("Search query on google website")
     void performSearch(String query) {
-        GooglePage.search query
+        googlePage.openGooglePage()
+        googlePage.search(query)
     }
 }
 
