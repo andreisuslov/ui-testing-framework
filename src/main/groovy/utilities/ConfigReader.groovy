@@ -1,34 +1,29 @@
 package utilities;
 
-public class ConfigReader {
-    //this class will read from configuration.properties file
+class ConfigReader {
+    //this class will read from config.properties file
     //then it will pass those values to our tests
 
-    private static Properties properties;
+    private static Properties properties = new Properties()
     //we need to load our configuration.properties file into properties variable
 
     static {
-
         try {
-            //first of all, we need to provide a path to out properties file
-            String path = "src/test/resources/configuration.properties";
+            // Specify the path to the properties file
+            String path = "src/test/resources/config.properties"
+            File propertiesFile = new File(path)
 
-            //to read from the file
-            File propertiesFile = new File(path);
-
-            //now we need to load into the properties variable
-            propertiesFile.withInputStream {
-                properties.load(it)
+            // Load the properties from the file
+            propertiesFile.withInputStream { inputStream ->
+                properties.load(inputStream)
             }
-
-        }catch(IOException e){ //in case this exception happens we want to where it is coming from and the reason for it
-            e.printStackTrace();
+        } catch (IOException e) { // Catch IOExceptions and print the stack trace for debugging
+            e.printStackTrace()
         }
-
     }
 
-    public static String getProperty(String key){
-        return properties.getProperty(key).trim();
+    static String getProperty(String key) {
+        // Get the property by key, trim it to remove any leading or trailing spaces
+        return properties.getProperty(key).trim()
     }
-
 }
