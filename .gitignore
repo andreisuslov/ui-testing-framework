@@ -5,3 +5,4 @@ target
 *.iml
 performance.log
 allure-results
+.vscode
