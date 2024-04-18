@@ -6,3 +6,4 @@ target
 performance.log
 allure-results
 .vscode
+performance.csv
