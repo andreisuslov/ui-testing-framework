@@ -6,21 +6,28 @@ import io.qameta.allure.Step
 
 import static com.codeborne.selenide.Selenide.*
 import static org.openqa.selenium.By.name
+import static utilities.ConfigReader.getPropertyValue
 
 class GooglePage {
+    GooglePage open() {
+        def url = getPropertyValue("url.baseUrl")
+        PerformanceTimer.logExecutionTime("Open Google", {
+            open(url)
 
-    public openGooglePage() {
-        open("https://www.google.com/")
+        })
+        return this
     }
 
     private SelenideElement getSearchBar() {
         $(name('q'))
     }
 
-    @Step("Perform search")
-    public void search(String query) {
+    @Step("Perform search for {query}")
+    GooglePage search(String query) {
         PerformanceTimer.logExecutionTime("Perform search") {
-        searchBar.sendKeys(query)
+            searchBar.sendKeys(query)
+            searchBar.pressEnter()
         }
+        return this
     }
 }
