@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ui-framework" />
+        <module name="SelenideFramework" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
