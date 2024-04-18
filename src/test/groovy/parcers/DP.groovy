@@ -6,24 +6,34 @@ import utilities.ConfigReader
 
 import java.lang.reflect.Method
 
+// Provides data for TestNG tests from YAML or JSON files
 class DP {
-    private DP() {
-        //not called
-    }
+
+    // Private constructor to prevent instantiation
+    private DP() {}
+
+    /**
+     * DataProvider that reads data from a YAML or JSON file based on the test method annotation and test context.
+     * @param testMethod The test method being executed.
+     * @param context The TestNG test context.
+     * @return A 2D array of data objects.
+     */
     @DataProvider(name = "DP")
-    public static Object[][] getDataFromFile(final Method testMethod, ITestContext context) {
+    static Object[][] getDataFromFile(Method testMethod, ITestContext context) {
         TestParameters parameters = testMethod.getAnnotation(TestParameters.class)
         String[] fields = parameters.value()
-        String dataFileName = context.getCurrentXmlTest().getParameter("dataParamFile");
-        String dataFileDir = ConfigReader.getProperty("suite");
-        String dataFilePath = dataFileDir + "/suites/smoke/" + dataFileName;
-        System.out.println("Loading the data parameters file: " + dataFilePath);
-        File tFile = new File(dataFilePath);
-        System.out.println("Full path to the file: " + tFile.getAbsolutePath());
+        String dataFileName = context.getCurrentXmlTest().getParameter("inputDataFile")
+        String dataFileDir = ConfigReader.getPropertyValue("suite")
+        String dataFilePath = "$dataFileDir/suites/smoke/$dataFileName"
 
-        if(dataFileName.endsWith(".yaml"))
-            return YamlDataParcer.parseFile(fields,tFile)
-        else
-            return JsonDataParcer.parseFile(fields,tFile)
+        println "Loading the data parameters file: $dataFilePath"
+        File tFile = new File(dataFilePath)
+        println "Full path to the file: ${tFile.absolutePath}"
+
+        if (dataFileName.endsWith(".yaml")) {
+            return YamlDataParcer.parseFile(fields, tFile)
+        } else {
+            return JsonDataParcer.parseFile(fields, tFile)
+        }
     }
 }
