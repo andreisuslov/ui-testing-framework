@@ -7,10 +7,10 @@ import utilities.ConfigReader
 import java.lang.reflect.Method
 
 // Provides data for TestNG tests from YAML or JSON files
-class DP {
+class DataProvider {
 
     // Private constructor to prevent instantiation
-    private DP() {}
+    private DataProvider() {}
 
     /**
      * DataProvider that reads data from a YAML or JSON file based on the test method annotation and test context.
@@ -18,7 +18,7 @@ class DP {
      * @param context The TestNG test context.
      * @return A 2D array of data objects.
      */
-    @DataProvider(name = "DP")
+    @org.testng.annotations.DataProvider(name = "DP")
     static Object[][] getDataFromFile(Method testMethod, ITestContext context) {
         TestParameters parameters = testMethod.getAnnotation(TestParameters.class)
         String[] fields = parameters.value()
