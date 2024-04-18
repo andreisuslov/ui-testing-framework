@@ -22,7 +22,7 @@ class ConfigReader {
         }
     }
 
-    static String getProperty(String key) {
+    static String getPropertyValue(String key) {
         // Get the property by key, trim it to remove any leading or trailing spaces
         return properties.getProperty(key).trim()
     }
