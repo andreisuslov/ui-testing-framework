@@ -2,6 +2,7 @@ package helper
 
 import com.codeborne.selenide.SelenideElement
 import com.codeborne.selenide.ex.ElementNotFound
+import io.qameta.allure.Step
 import org.openqa.selenium.StaleElementReferenceException
 
 import static com.codeborne.selenide.Condition.*
@@ -11,6 +12,11 @@ import static org.openqa.selenium.Keys.*
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver
 
 class GeneralHelper {
+
+    @Step("{message}")
+    static printInTest(String message) {
+        println(message)
+    }
 
     public static void doWithRetries(int maxAttempts = 5, Closure code) {
         int attempts = 0
