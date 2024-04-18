@@ -1,8 +1,12 @@
 Common:
     query: "OCA Java Exam"
+    resultTitle: "OCA"
 TC1:
     query: "climate change"
+    resultTitle: "Climate change"
 TC2:
     query: "vegan diet"
+    resultTitle: "vegan"
 TC3:
     query: "car free cities"
+    resultTitle: "car-free"
