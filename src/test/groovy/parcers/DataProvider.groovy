@@ -1,7 +1,6 @@
 package parcers
 
 import org.testng.ITestContext
-import org.testng.annotations.DataProvider
 import utilities.ConfigReader
 
 import java.lang.reflect.Method
